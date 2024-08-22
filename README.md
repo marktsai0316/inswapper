@@ -7,6 +7,8 @@ One-click Face Swapper and Restoration powered by [insightface](https://github.c
 
 <left><img src="https://github.com/haofanwang/inswapper/raw/main/data/mans1.jpeg" width="49%" height="49%"></left> 
 <right><img src="https://github.com/haofanwang/inswapper/raw/main/result.png" width="49%" height="49%"></right> 
+<left><img src="https://github.com/marktsai0316/inswapper/raw/main/result.png" width="49%" height="49%"></left> 
+<right><img src="https://github.com/marktsai0316/inswapper/raw/main/result1.png" width="49%" height="49%"></right> 
 
 ## Installation
 
@@ -52,6 +54,14 @@ target_img = Image.open("./data/mans1.jpeg")
 model = "./checkpoints/inswapper_128.onnx"
 result_image = process(source_img, target_img, "-1", "-1", model)
 result_image.save("result.png")
+
+
+source_img = [Image.open("./result.png")]
+target_img = Image.open("./result.png")
+model = "./checkpoints/inswapper_128.onnx"
+result_image = process(source_img, target_img, "1,0", "0,1", model)
+result_image.save("result1.png")
+
 ```
 
 To improve to quality of face, we can further do face restoration as shown in the full script.
