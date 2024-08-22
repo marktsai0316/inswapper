@@ -92,7 +92,7 @@ def process(source_img: Union[Image.Image, List],
             print("Replacing faces in target image from the left to the right by order")
             for i in range(num_target_faces):
                 source_faces = get_many_faces(face_analyser, cv2.cvtColor(np.array(source_img[i]), cv2.COLOR_RGB2BGR))
-                source_index = i
+                source_index = 0 if num_source_faces == 1 else i
                 target_index = i
 
                 if source_faces is None:
@@ -116,7 +116,7 @@ def process(source_img: Union[Image.Image, List],
             if source_faces is None:
                 raise Exception("No source faces found!")
 
-            if target_indexes == "-1":
+            if target_indexes == -1:
                 if num_source_faces == 1:
                     print("Replacing all faces in target image with the same face from the source image")
                     num_iterations = num_target_faces
@@ -145,10 +145,10 @@ def process(source_img: Union[Image.Image, List],
             else:
                 print("Replacing specific face(s) in the target image with specific face(s) from the source image")
 
-                if source_indexes == "-1":
+                if source_indexes == -1:
                     source_indexes = ','.join(map(lambda x: str(x), range(num_source_faces)))
 
-                if target_indexes == "-1":
+                if target_indexes == -1:
                     target_indexes = ','.join(map(lambda x: str(x), range(num_target_faces)))
 
                 source_indexes = source_indexes.split(',')
