@@ -148,16 +148,16 @@ def process(source_img: Union[Image.Image, List],
                 if source_indexes == "-1":
                     source_indexes = ','.join(map(lambda x: str(x), range(num_source_faces)))
 
-                if target_indexes == "-1":
-                    target_indexes = ','.join(map(lambda x: str(x), range(num_target_faces)))
+                #if target_indexes == "-1":
+                #  target_indexes = ','.join(map(lambda x: str(x), range(num_target_faces)))
 
                 source_indexes = source_indexes.split(',')
                 target_indexes = target_indexes.split(',')
                 num_source_faces_to_swap = len(source_indexes)
                 num_target_faces_to_swap = len(target_indexes)
 
-                if num_source_faces_to_swap > num_source_faces:
-                    raise Exception("Number of source indexes is greater than the number of faces in the source image")
+                #if num_source_faces_to_swap > num_source_faces:
+                #    raise Exception("Number of source indexes is greater than the number of faces in the source image")
 
                 if num_target_faces_to_swap > num_target_faces:
                     raise Exception("Number of target indexes is greater than the number of faces in the target image")
